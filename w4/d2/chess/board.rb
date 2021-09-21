@@ -1,18 +1,18 @@
 class Board
 
-  def initialize
-    @board = Array.new(8) {Array.new(8)}
-    @sentinel = NullPiece.new
+  def initialize()
+    @grid = Array.new(8) {Array.new(8)}
+    # @sentinel = NullPiece.new
   end
 
   def [](pos)
     row,col = pos
-    @board[row][col]
+    @grid[row][col]
   end
 
   def []=(pos,val)
     row,col = pos
-    @board[row][col] = val
+    @grid[row][col] = val
   end
 
   def valid_pos?(pos)
@@ -21,10 +21,16 @@ class Board
   end
 
   def move_piece(start_pos,end_pos)
-    raise "There is no piece at the start position" if start_pos.empty?
-    raise "Cannot move to this position" if !end_pos.empty?
+    # raise "There is no piece at the start position" if start_pos.empty?
+    # raise "Cannot move to this position" if !end_pos.nil?
+    
+    self[start_pos], self[end_pos] = self[end_pos], self[start_pos]
 
-    @board[start_pos] = @board[end_pos]
+  end
+
+  def add_piece(piece, pos)
+    row, col = pos
+    @grid[row][col] = piece
   end
 
 end
