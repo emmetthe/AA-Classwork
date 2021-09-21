@@ -1,5 +1,5 @@
 class Employee 
-  attr_writer :name, :salary, :title, :boss
+  attr_accessor :name, :salary, :title, :boss
 
   def initialize(name,salary,title,boss)
     @name = name
