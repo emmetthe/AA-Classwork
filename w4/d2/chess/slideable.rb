@@ -21,7 +21,16 @@ module Slideable
     h = incrementor(dx)
     v = incrementor(dy)
 
-    
+    h_counter = 0
+    v_counter = 0
+
+    until h_counter == dx && v_counter == dy
+      if 
+        
+      end
+      h_counter += h
+      v_counter += v
+    end
 
     #update our move every time we move
 
