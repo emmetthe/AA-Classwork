@@ -9,6 +9,18 @@ module Slideable
   def diagonal_dirs 
     DIAGONAL_DIRS
   end
+ #(1,3) 
+  def moves([3,7]) 
+    #call move dirs and grow unblocked moves 
+    
+    total_moves = []
+
+    horizontal.each do |k,v| 
+
+    end
+
+    total_moves
+  end
 
   private
   
@@ -24,29 +36,29 @@ module Slideable
     h_counter = 0
     v_counter = 0
 
+    poss_moves = [] 
+
     until h_counter == dx && v_counter == dy
       row, col = pos
-      if @grid[row + h_counter][col + v_counter] != NullPiece
-        if self.color != color
-          @grid[row + h_counter][col + v_counter] = self.color
+      new_r = row + h_counter
+      new_c = col + v_counter
+      pos = [new_r,new_c]
+      q
+      if @board[pos] == NullPiece
+        poss_moves << @board[pos]
+      else 
+        if self.color != @board[pos].color
+          poss_moves << @board[pos]
+          break
         else
-          
+          break
         end
       end
       h_counter += h
       v_counter += v
     end
 
-    #update our move every time we move
-
-    #check for empty spaces before incrementing
-
-    #if color is the same, end before the taken spot
-
-    #if color is diff, end at the taken spot and replace the other piece
-
-    #maybe? check if out of board bounds 
-
+    poss_moves
   end
 
   def incrementor(var)
