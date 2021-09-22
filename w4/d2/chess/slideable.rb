@@ -18,7 +18,31 @@ module Slideable
   end
 
   def grow_unblocked_moves_in_dirs(dx, dy)
+    h = incrementor(dx)
+    v = incrementor(dy)
 
+    
+
+    #update our move every time we move
+
+    #check for empty spaces before incrementing
+
+    #if color is the same, end before the taken spot
+
+    #if color is diff, end at the taken spot and replace the other piece
+
+    #maybe? check if out of board bounds 
+
+  end
+
+  def incrementor(var)
+    if var == 0
+      return 0
+    elsif var > 0
+      return 1
+    else
+      return -1
+    end
   end
   
 end
