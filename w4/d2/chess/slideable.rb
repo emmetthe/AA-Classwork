@@ -25,8 +25,13 @@ module Slideable
     v_counter = 0
 
     until h_counter == dx && v_counter == dy
-      if 
-        
+      row, col = pos
+      if @grid[row + h_counter][col + v_counter] != NullPiece
+        if self.color != color
+          @grid[row + h_counter][col + v_counter] = self.color
+        else
+          
+        end
       end
       h_counter += h
       v_counter += v
