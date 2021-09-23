@@ -47,4 +47,12 @@ describe Array do
     end
   end
   
+  describe "#move" do
+    it "moves from one pile to another" do 
+      arr = [[5, 4, 3, 2, 1], [], []]
+      position = [arr[1].push(arr.last)]
+      expect(arr.move(position)).to eq([5, 4, 3, 2], [1], [])
+    end
+  end
+
 end
