@@ -36,10 +36,14 @@ describe Array do
     end
   end
 
-  describe "stock_picker" do 
+  describe "#stock_picker" do 
     it "chooses the most profitable pair" do 
-      stock_prices = [2, 7, 3, 1, 6]
-      expect(stock_price.stock_picker).to eq([3, 4])
+      stock_prices = [2, 7, 3, 1, 8]
+      expect(stock_prices.stock_picker).to eq([3, 4])
+    end
+    it "does not buy if market is crashing" do
+      stocks = [6, 5, 4, 3, 2, 1]
+      expect(stocks.stock_picker).to eq([])
     end
   end
   

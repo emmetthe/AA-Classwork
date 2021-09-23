@@ -25,5 +25,20 @@ class Array
   def my_transpose
     self.transpose
   end
-  
+
+  def stock_picker
+    pair = []
+    best_profit = 0
+      (0...self.length).each do |buy|
+        (buy + 1...self.length).each do |sell|
+          current_profit = self[sell] - self[buy]
+          if current_profit > best_profit 
+            best_profit = current_profit
+            pair = [buy, sell]
+          end
+        end
+      end
+      pair
+  end
+
 end
