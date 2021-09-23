@@ -8,8 +8,18 @@ describe Array do
     end
   end
 
-  it "finds all pairs that sum to zero" do 
+  describe "#two_sum" do
+      # let(:array) {[-1, 0, 2, -2, 1]}
+      # let(:array2) {[-1, 0, 2, -2, 1, 0]}
+    it "finds all pairs that sum to zero" do 
+      expect([-1, 0, 2, -2, 1].two_sum).to eq([[0, 4], [2, 3]])
+    end
 
+    it "does not count two zeros" do 
+      expect([-1, 0, 2, -2, 1, 0].two_sum).to eq([[0, 4], [2, 3]])
+    end
   end
+
+
   
 end

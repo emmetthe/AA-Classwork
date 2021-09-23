@@ -9,5 +9,17 @@ class Array
     end
     return new_arr
   end
+
+  def two_sum
+    pairs = []
+    (0...self.length).each do |i|
+      (i + 1...self.length).each do |j|
+        if self[i] + self[j] == 0 && (self[i] != 0)
+          pairs << [i, j]
+        end
+      end
+    end
+    pairs 
+  end
   
 end
