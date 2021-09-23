@@ -1,3 +1,4 @@
+require 'byebug'
 module Slideable 
   HORIZONTAL_DIRS = [[1, 0], [-1, 0], [0, 1], [0, -1]]
   DIAGONAL_DIRS = [[-1, -1], [1, 1], [-1, 1], [1, -1]]
@@ -9,14 +10,14 @@ module Slideable
   def diagonal_dirs 
     DIAGONAL_DIRS
   end
- #(1,3) 
-  def moves([3,7]) 
+
+  def moves
     #call move dirs and grow unblocked moves 
     
     total_moves = []
 
-    horizontal.each do |k,v| 
-
+    move_dirs.each do |sub_arr|
+      total_moves += grow_unblocked_moves_in_dir(sub_arr[0], sub_arr[1])
     end
 
     total_moves
@@ -25,50 +26,40 @@ module Slideable
   private
   
   def move_dirs
-    horizontal = {left: [-1, 0], right: [1, 0], down: [0, -1], up: [0, 1]}
-    diagonal = {up_left: [-1, 1], up_right: [1, 1], down_left: [-1, -1], down_right: [1, -1]}
+    horizontal_dirs + diagonal_dirs
   end
 
-  def grow_unblocked_moves_in_dirs(dx, dy)
-    h = incrementor(dx)
-    v = incrementor(dy)
-
-    h_counter = 0
-    v_counter = 0
+  def grow_unblocked_moves_in_dir(dx, dy)
+    h_counter = dx
+    v_counter = dy
 
     poss_moves = [] 
+  
 
-    until h_counter == dx && v_counter == dy
+    until poss_moves.length > 64
       row, col = pos
       new_r = row + h_counter
       new_c = col + v_counter
-      pos = [new_r,new_c]
-      q
-      if @board[pos] == NullPiece
-        poss_moves << @board[pos]
-      else 
-        if self.color != @board[pos].color
-          poss_moves << @board[pos]
-          break
-        else
-          break
+      new_pos = [new_r,new_c]
+      if @board.valid_pos?(new_pos)
+        if @board[new_pos].is_a?(NullPiece) #check type of piece
+          poss_moves << new_pos
+        else 
+          if self.color != @board[new_pos].color
+            poss_moves << new_pos
+            break
+          else
+            break
+          end
         end
+      else 
+        break
       end
-      h_counter += h
-      v_counter += v
+      h_counter += dx
+      v_counter += dy
     end
 
     poss_moves
   end
 
-  def incrementor(var)
-    if var == 0
-      return 0
-    elsif var > 0
-      return 1
-    else
-      return -1
-    end
-  end
-  
 end

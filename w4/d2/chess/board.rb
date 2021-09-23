@@ -5,19 +5,23 @@ require_relative "pieces"
 class Board
 
   def initialize()
-    @grid = Array.new(8) {Array.new(8, NullPiece.instance)}
+    @grid = Array.new(8) {Array.new(8)}
     # @sentinel = NullPiece.new
 
     fill_board
   end
-
+# queen = [0, 4] [6, 4]
+# rook = [0, 0] [0, 6] [6, 0], [6, 6]
+# bishop = [0,2], [0, 5], [6, 2], [6, 5]
   def fill_board
     @grid.map!.with_index do |sub_arr, row|
       sub_arr.map!.with_index do |elem, col|
         if row <= 1
-          elem = Piece.new(:white,self,[row,col])
+          elem = King.new(:white,self,[row,col])
         elsif row >= 6
-          elem = Piece.new(:black,self,[row,col]) 
+          elem = Rook.new(:black,self,[row,col]) 
+        else
+          elem = NullPiece.instance
         end
       end
     end
@@ -42,7 +46,7 @@ class Board
     raise "There is no piece at the start position" if start_pos.empty?
     
     self[start_pos], self[end_pos] = self[end_pos], self[start_pos]
-
+    self[end_pos].pos = end_pos
   end
 
   def add_piece(piece, pos)

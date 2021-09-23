@@ -1,2 +1,7 @@
 require_relative "null"
 require_relative "piece"
+require_relative "rook"
+require_relative "knight"
+require_relative "king"
+require_relative "queen"
+require_relative "pawn"

@@ -1,26 +1,25 @@
-class Piece
+require_relative 'slideable'
+require_relative 'piece'
+class Rook < Piece
+  include Slideable
+
   attr_reader :color, :board
   attr_accessor :pos
+
   def initialize(color, board, pos)
     @color = color
     @board = board
     @pos = pos
   end
 
-  def to_s
-    symbol.to_s
-  end
-
-  def empty?
-    pos.nil?
-  end
-
-  def pos=(val)
-    row, col = pos
-    @board[row][col] = val
-  end
-
   def symbol
-    
+    :R
   end
+
+  protected
+
+  def move_dirs
+    horizontal_dirs
+  end
+
 end
