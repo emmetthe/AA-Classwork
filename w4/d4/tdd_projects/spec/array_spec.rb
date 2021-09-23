@@ -20,6 +20,27 @@ describe Array do
     end
   end
 
+  describe "#my_transpose" do 
+    it "represents a matrix" do
+      rows = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8]
+      ]
+      cols = cols = [
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8]
+      ]
+      expect(rows.my_transpose).to eq(cols)
+    end
+  end
 
+  describe "stock_picker" do 
+    it "chooses the most profitable pair" do 
+      stock_prices = [2, 7, 3, 1, 6]
+      expect(stock_price.stock_picker).to eq([3, 4])
+    end
+  end
   
 end
