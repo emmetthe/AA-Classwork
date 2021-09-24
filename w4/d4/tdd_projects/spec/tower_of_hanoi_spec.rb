@@ -8,7 +8,7 @@ describe TowerOfHanoi do
             end
             it "can only move to a larger disc" do
                 towers.move(0, 1)
-                expect{towers.move(0, 1)}.to raise_error("can not move there")
+                expect{towers.move(0, 2)}.to_not raise_error
             end
         end
 end
