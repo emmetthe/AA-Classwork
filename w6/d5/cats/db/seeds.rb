@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-cats = Cat.create(
-  birth_date: "1922/01/22", name: "test", color: "white", sex: "M", description: "this is a cat"
-)
+cats = Cat.create([
+  {birth_date: "1922/01/22", name: "whitey", color: "white", sex: "M", description: "this is a cat"},
+  {birth_date: "2000/02/01", name: "brownie", color: "brown", sex: "F", description: "this is a brown cat"},
+  { birth_date: "5285/05/16", name: "blackie", color: "black", sex: "F", description: "this is a black cat"}
+])

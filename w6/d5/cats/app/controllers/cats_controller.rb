@@ -11,7 +11,7 @@ class CatsController < ApplicationController
   end
 
   def new 
-    @cats = Cat.new(cats_params)
+    @cats = Cat.new
     render :new
   end
   
@@ -25,12 +25,17 @@ class CatsController < ApplicationController
   end
 
   def create
-    @cats = Cat.find(params[:id])
+    @cats = Cat.new(cats_params)
     if @cats.save
       redirect_to cat_url(@cats)
     else
       render json: @cats.errors.full_messages, status: 422
     end
+  end
+
+  def edit
+    @cats = Cat.find(params[:id])
+    render :edit
   end
 
   private
