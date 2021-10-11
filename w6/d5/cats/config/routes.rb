@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   resources :cats, except: [:destroy]
   
+  root to: redirect('/cats')
 end

@@ -11,16 +11,16 @@ class CatsController < ApplicationController
   end
 
   def new 
-    @cats = Cat.new
+    @cat = Cat.new
     render :new
   end
   
   def update
-    @cats = Cat.find(params[:id])
-    if @cats.update(cat_params)
-      redirect_to cat_url(@cats)
+    @cat = Cat.find(params[:id])
+    if @cat.update_attributes(cat_params)
+      redirect_to cat_url(@cat)
     else
-      render json: @cats.errors.full_messages, status: 422
+      render json: @cat.errors.full_messages, status: 422
     end
   end
 
@@ -34,13 +34,13 @@ class CatsController < ApplicationController
   end
 
   def edit
-    @cats = Cat.find(params[:id])
+    @cat = Cat.find(params[:id])
     render :edit
   end
 
   private
   def cats_params
-    params.require(:cats).permit(:birth_date, :name, :color, :sex, :description, :age)
+    params.require(:cat).permit(:birth_date, :name, :color, :sex, :description, :age)
   end
 
 end
