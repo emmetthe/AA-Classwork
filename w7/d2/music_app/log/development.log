@@ -1,0 +1,442 @@
+  [1m[35m (257.1ms)[0m  [1m[35mCREATE DATABASE "music_app_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (254.7ms)[0m  [1m[35mCREATE DATABASE "music_app_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4505726345591715405)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20211012182543)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20211012182543_create_users.rb:3
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_session_token" ON "users"  ("session_token")[0m
+  ↳ db/migrate/20211012182543_create_users.rb:9
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/migrate/20211012182543_create_users.rb:10
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211012182543"]]
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-10-12 18:29:48.830308"], ["updated_at", "2021-10-12 18:29:48.830308"]]
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4505726345591715405)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/cats" for ::1 at 2021-10-12 12:16:37 -0700
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/emmetthe/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/cats"):
+  
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/c" for ::1 at 2021-10-12 12:16:41 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/c"):
+  
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for ::1 at 2021-10-12 12:16:42 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/emmetthe/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/emmetthe/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (1.1ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2021-10-12 12:16:54 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (180.4ms)
+Completed 500 Internal Server Error in 376ms (ActiveRecord: 2.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_session_url' for #<#<Class:0x00007fd4680e3550>:0x00007fd4680e1bb0>
+Did you mean?  new_sessions_url):
+    1: <h1>Welcome</h1>
+    2: 
+    3: <a href="<%=new_session_url%>">Sign In<</a>
+    4: 
+    5: <form class="form" action="<%=users_url%>" method="POST">
+    6:   <input
+  
+app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb__442066959329078818_70275127772280'
+app/controllers/users_controller.rb:5:in `new'
+Started GET "/users/new" for ::1 at 2021-10-12 12:17:25 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 1695ms (Views: 1694.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2021-10-12 12:17:32 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 347ms (Views: 346.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2021-10-12 12:17:34 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 351ms (Views: 350.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2021-10-12 12:17:35 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 340ms (Views: 339.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2021-10-12 12:17:40 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"+e4+YaFlg8Iyn5Ucan7G0UD3M1MZZuQFghJlvc+jHtNVqa8i/hcysjDj2i3NlwxlTKyDZ+k8J1hGGj9p+6/CKQ==", "user"=>{"email"=>"", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant User::BCrypt):
+  
+app/models/user.rb:31:in `password='
+app/controllers/users_controller.rb:9:in `create'
+Started GET "/sessions/new" for ::1 at 2021-10-12 12:17:51 -0700
+  
+AbstractController::ActionNotFound (The action 'new' could not be found for SessionsController):
+  
+actionpack (5.2.6) lib/abstract_controller/base.rb:129:in `process'
+actionview (5.2.6) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.6) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.6) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.6) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.6) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.6) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.6) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.6) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.6) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (5.2.6) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.6) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.6) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.6) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/new" for ::1 at 2021-10-12 12:17:56 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 353ms (Views: 352.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2021-10-12 12:40:04 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (180.5ms)
+Completed 500 Internal Server Error in 318ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `auth_token' for #<#<Class:0x00007fd4680e3550>:0x00007fd4758752c0>):
+    3: <a href="<%=new_sessions_url%>">Sign In</a>
+    4: 
+    5: <form class="form" action="<%=users_url%>" method="POST">
+    6:   <%=auth_token%>
+    7: 
+    8:   <label for="email">Email</label>
+    9:   <input id="email" type="text" name="user[email]">
+  
+app/views/users/new.html.erb:6:in `_app_views_users_new_html_erb__442066959329078818_70275240776080'
+app/controllers/users_controller.rb:5:in `new'
+Started GET "/users/new" for ::1 at 2021-10-12 12:41:19 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (188.1ms)
+Completed 500 Internal Server Error in 321ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `auth_token' for #<#<Class:0x00007fd4680e3550>:0x00007fd469348420>):
+    3: <a href="<%=new_sessions_url%>">Sign In</a>
+    4: 
+    5: <form class="form" action="<%=users_url%>" method="POST">
+    6:   <%=auth_token%>
+    7: 
+    8:   <label for="email">Email</label>
+    9:   <input id="email" type="text" name="user[email]">
+  
+app/views/users/new.html.erb:6:in `_app_views_users_new_html_erb__442066959329078818_70275137435640'
+app/controllers/users_controller.rb:5:in `new'
+Started GET "/users/new" for ::1 at 2021-10-12 12:42:00 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (204.9ms)
+Completed 500 Internal Server Error in 345ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `auth_token' for #<#<Class:0x00007fd4680e3550>:0x00007fd47005d808>):
+    3: <a href="<%=new_sessions_url%>">Sign In</a>
+    4: 
+    5: <form class="form" action="<%=users_url%>" method="POST">
+    6:   <%= auth_token %>
+    7: 
+    8:   <label for="email">Email</label>
+    9:   <input id="email" type="text" name="user[email]">
+  
+app/views/users/new.html.erb:6:in `_app_views_users_new_html_erb__442066959329078818_70275194582680'
+app/controllers/users_controller.rb:5:in `new'
+Started GET "/users/new" for ::1 at 2021-10-12 12:42:01 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (158.3ms)
+Completed 500 Internal Server Error in 290ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `auth_token' for #<#<Class:0x00007fd4680e3550>:0x00007fd4759ab7c0>):
+    3: <a href="<%=new_sessions_url%>">Sign In</a>
+    4: 
+    5: <form class="form" action="<%=users_url%>" method="POST">
+    6:   <%= auth_token %>
+    7: 
+    8:   <label for="email">Email</label>
+    9:   <input id="email" type="text" name="user[email]">
+  
+app/views/users/new.html.erb:6:in `_app_views_users_new_html_erb__442066959329078818_70275241431520'
+app/controllers/users_controller.rb:5:in `new'
+Started GET "/users/new" for ::1 at 2021-10-12 12:47:09 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (14.4ms)
+Completed 500 Internal Server Error in 148ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:6: syntax error, unexpected '<', expecting keyword_end
+...uffer.safe_append='  '.freeze;<input
+...                              ^
+/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:11: syntax error, unexpected tCONSTANT, expecting keyword_end
+  <label for="email">Email</label>
+                     ^~~~~
+/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:14: unknown regexp options - labl
+/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:15: syntax error, unexpected '<'
+  <input id="password" type="pas...
+  ^
+/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:15: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+  <input id="password" type="password" name="user[passwo...
+                       ^~~~
+/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:15: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+..."password" type="password" name="user[password]">
+...                           ^~~~
+/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:17: syntax error, unexpected '<'
+  <input type="submit" value="Su...
+  ^
+/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:17: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+  <input type="submit" value="Submit">
+                       ^~~~~
+/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:18: syntax error, unexpected '<'
+</form>'.freeze;
+^
+/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:22: unterminated regexp meets end of file
+          end
+             ^
+/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:22: syntax error, unexpected end-of-input, expecting keyword_end
+          end
+             ^):
+  
+app/views/users/new.html.erb:6: syntax error, unexpected '<', expecting keyword_end
+app/views/users/new.html.erb:11: syntax error, unexpected tCONSTANT, expecting keyword_end
+app/views/users/new.html.erb:14: unknown regexp options - labl
+app/views/users/new.html.erb:15: syntax error, unexpected '<'
+app/views/users/new.html.erb:15: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/views/users/new.html.erb:15: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/views/users/new.html.erb:17: syntax error, unexpected '<'
+app/views/users/new.html.erb:17: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/views/users/new.html.erb:18: syntax error, unexpected '<'
+app/views/users/new.html.erb:22: unterminated regexp meets end of file
+app/views/users/new.html.erb:22: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/users_controller.rb:5:in `new'
+Started GET "/users/new" for ::1 at 2021-10-12 12:47:24 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.5ms)
+Completed 500 Internal Server Error in 131ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:6: syntax error, unexpected '<', expecting keyword_end
+...uffer.safe_append='  '.freeze;<input
+...                              ^
+/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:11: syntax error, unexpected tCONSTANT, expecting keyword_end
+  <label for="email">Email</label>
+                     ^~~~~
+/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:14: unknown regexp options - labl
+/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:15: syntax error, unexpected '<'
+  <input id="password" type="pas...
+  ^
+/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:15: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+  <input id="password" type="password" name="user[passwo...
+                       ^~~~
+/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:15: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+..."password" type="password" name="user[password]">
+...                           ^~~~
+/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:17: syntax error, unexpected '<'
+  <input type="submit" value="Su...
+  ^
+/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:17: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+  <input type="submit" value="Submit">
+                       ^~~~~
+/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:18: syntax error, unexpected '<'
+</form>'.freeze;
+^
+/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:22: unterminated regexp meets end of file
+          end
+             ^
+/mnt/c/Users/Emmett/Desktop/app_academy/AA-Classwork/w7/d2/music_app/app/views/users/new.html.erb:22: syntax error, unexpected end-of-input, expecting keyword_end
+          end
+             ^):
+  
+app/views/users/new.html.erb:6: syntax error, unexpected '<', expecting keyword_end
+app/views/users/new.html.erb:11: syntax error, unexpected tCONSTANT, expecting keyword_end
+app/views/users/new.html.erb:14: unknown regexp options - labl
+app/views/users/new.html.erb:15: syntax error, unexpected '<'
+app/views/users/new.html.erb:15: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/views/users/new.html.erb:15: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/views/users/new.html.erb:17: syntax error, unexpected '<'
+app/views/users/new.html.erb:17: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+app/views/users/new.html.erb:18: syntax error, unexpected '<'
+app/views/users/new.html.erb:22: unterminated regexp meets end of file
+app/views/users/new.html.erb:22: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/users_controller.rb:5:in `new'
+Started GET "/users/new" for ::1 at 2021-10-12 12:47:39 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 351ms (Views: 350.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2021-10-12 12:47:53 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 343ms (Views: 342.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2021-10-12 12:48:13 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 360ms (Views: 359.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2021-10-12 12:48:23 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 356ms (Views: 355.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2021-10-12 12:48:25 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 342ms (Views: 342.0ms | ActiveRecord: 0.0ms)
+
+
