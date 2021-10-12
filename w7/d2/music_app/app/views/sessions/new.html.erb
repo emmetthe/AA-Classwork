@@ -1,8 +1,8 @@
 <h1>Welcome</h1>
 
-<a href="<%=new_session_url%>">Sign In!</a>
+<a href="<%=new_user_url%>">Sign Up!</a>
 
-<form class="form" action="<%=users_url%>" method="POST">
+<form class="form" action="<%=session_url%>" method="POST">
   <input
       type="hidden"
       name="authenticity_token"
@@ -14,5 +14,5 @@
   <label for="password">Password:</label>
   <input id="password" type="password" name="user[password]">
 
-  <input type="submit" value="Sign up!">
+  <input type="submit" value="Sign in!">
 </form>
