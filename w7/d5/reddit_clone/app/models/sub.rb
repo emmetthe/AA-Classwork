@@ -17,6 +17,6 @@ class Sub < ApplicationRecord
     foreign_key: :mod_id,
     class_name: :User
 
-  
+  has_many :posts
 
 end

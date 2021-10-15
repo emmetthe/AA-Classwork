@@ -36,7 +36,10 @@ class SubsController < ApplicationController
   def update
     @sub = Sub.find(params[:id])
     
-    if @sub.update(sub_params)
+    if @sub.mod_id != current_user.id
+      flash[:errors] = ["Cannot update sub unless you are a moderator"]
+      redirect_to sub_url(@sub)
+    elsif @sub.update(sub_params)
       redirect_to sub_url(@sub)
     else
       flash[:errors] = @sub.errors.full_messages
