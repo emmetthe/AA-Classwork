@@ -14,7 +14,12 @@ class PostsController < ApplicationController
 
   def edit 
     @post = Post.find(params[:id])
-    render :edit 
+    if post_author?
+      render :edit 
+    else
+      flash[:errors] = ["Cannot edit another user's post"]
+      redirect_to post_url(@post)
+    end
   end
 
   def create 
@@ -35,6 +40,19 @@ class PostsController < ApplicationController
       flash.now[:errors] = @post.errors.full_messages
       render :edit
     end
+  end
+
+  def post_author?
+    @post.author_id == current_user.id
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    if post_author? && @post.destroy
+    else
+      flash[:errors] = ["Cannnot delete another user's posts"]
+    end
+    redirect_to sub_posts(@post.sub_id)
   end
 
   private
