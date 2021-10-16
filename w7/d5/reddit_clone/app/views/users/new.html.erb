@@ -1,7 +1,7 @@
 <h1>Reddit Clone Sign Up Page</h1>
 
-<form action="<%=user_url(@user)%>" method="POST">
-  <input type="hidden" name="authorization_token" value="form_authorization_token">
+<form action="<%=users_url%>" method="POST">
+  <%=auth_token%>
   <label for="username">Username
     <input type="text" name="user[username]" value="<%=@user.username%>">
   </label>
