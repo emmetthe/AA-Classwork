@@ -13,3 +13,17 @@
   left: 50%;
   transform: translateX(-50%);
 }
+
+.profile-friends {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.profile-friends > li {
+  width: 60px;
+  margin: 0 0 10px 0;
+}
+
+.profile-friends > li:nth-child(2n) {
+  margin: 0 10px 10px 10px;
+}
