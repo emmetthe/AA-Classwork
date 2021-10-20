@@ -10,9 +10,10 @@ if (typeof window === 'undefined'){
  */
 function _makeGrid () {
   let grid = Array.from(Array(8), () => new Array(8));
-  grid[3][4], grid[4][3] =  new Piece('black'), new Piece('black');
-  grid[3][3], grid[4][4] =  new Piece('white'), new Piece('white');
-  console.log(grid[3][4]);
+  grid[3][4] = new Piece('black');
+  grid[4][3] = new Piece('black');
+  grid[3][3] = new Piece('white');
+  grid[4][4] = new Piece('white');
   return grid;
 }
 
@@ -33,6 +34,7 @@ Board.DIRS = [
  * Checks if a given position is on the Board.
  */
 Board.prototype.isValidPos = function (pos) {
+  
 };
 
 /**
