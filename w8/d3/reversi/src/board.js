@@ -113,6 +113,7 @@ Board.prototype.validMove = function (pos, color) {
       captures[i] = true;
     }
   }
+  console.log("At pos[", pos, "]: ", captures);
   let any = false;
   for (let i = 0; i < captures.length; i++) {
     if (captures[i] === true) {
@@ -151,6 +152,17 @@ Board.prototype.placePiece = function (pos, color) {
  * the Board for a given color.
  */
 Board.prototype.validMoves = function (color) {
+  let valid_moves = [];
+  for (let i = 0; i < 8; i++){
+    for (let j = 0; j < 8; j++){
+      if (this.validMove([i, j], color)){
+        valid_moves.push([i, j]);
+        console.log([i, j]);
+      }
+    }
+  }
+  console.log(valid_moves);
+  return valid_moves;
 };
 
 /**
