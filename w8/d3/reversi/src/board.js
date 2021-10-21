@@ -81,17 +81,17 @@ Board.prototype.isOccupied = function (pos) {
  * Returns empty array if no pieces of the opposite color are found.
  */
 Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip=[]){
-  // [6, 1], "black", [0, 1]
-  let new_pos = [pos[0] + dir[0], pos[1] + dir[1]];
+  // [3, 3], "black", [1, 0], [[3,3]]
+  let new_pos = [pos[0] + dir[0], pos[1] + dir[1]]; // 
   if (!this.isValidPos(new_pos)){
-    return piecesToFlip;
+    return [];
   } else if (this.isMine(new_pos, color)){
     return piecesToFlip
   } else if (this.isOccupied(new_pos)){
     piecesToFlip.push(new_pos);
     return this._positionsToFlip(new_pos, color, dir, piecesToFlip);
   } else {
-    return piecesToFlip;
+    return [];
   }
 };
 
@@ -101,30 +101,23 @@ Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip=[]){
  * color being flipped.
  */
 Board.prototype.validMove = function (pos, color) {
+  // [2, 3], 'black'
   let dirs = [[1, 0], [0, 1], [-1, 0], [0, -1], [1, 1], [1, -1], [-1, 1], [-1, -1]];
-  if (this.isOccupied(pos)) {
+  if (this.isOccupied(pos) || !this.isValidPos(pos)) {
+    // is ok
     return false;
   }
-  let captures = [false, false, false, false, false, false, false, false];
+
+
   for (let i = 0; i < dirs.length; i++) {
-    let dir = dirs[i];
+                        // pos = [2, 3]
+    let dir = dirs[i];  // [0, 1]
     let flipped = this._positionsToFlip(pos, color, dir);
     if (flipped.length > 0) {
-      captures[i] = true;
+      return true;
     }
   }
-  console.log("At pos[", pos, "]: ", captures);
-  let any = false;
-  for (let i = 0; i < captures.length; i++) {
-    if (captures[i] === true) {
-      any = true;
-      break;
-    }
-    if (!any) {
-      return false;
-    }
-  }
-  return this.isValidPos(pos)
+  return false;
 };
 
 /**
@@ -135,6 +128,8 @@ Board.prototype.validMove = function (pos, color) {
  */
 Board.prototype.placePiece = function (pos, color) {
   if (!this.validMove(pos)) {
+    debugger
+    console.log(pos);
     throw new Error("Invalid move!")
   }
   let dirs = [[1, 0], [0, 1], [-1, 0], [0, -1], [1, 1], [1, -1], [-1, 1], [-1, -1]];
@@ -157,11 +152,9 @@ Board.prototype.validMoves = function (color) {
     for (let j = 0; j < 8; j++){
       if (this.validMove([i, j], color)){
         valid_moves.push([i, j]);
-        console.log([i, j]);
       }
     }
   }
-  console.log(valid_moves);
   return valid_moves;
 };
 
