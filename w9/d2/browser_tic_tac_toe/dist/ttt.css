@@ -1,0 +1,21 @@
+.ttt ul {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+  width: 50%;
+}
+
+ul li {
+  flex-wrap: wrap;
+  width: 200px;
+  height: 200px;
+  background-color: gray;
+  margin: 10px;
+  border-style: solid;
+  list-style: none;
+}
+
+ul li:hover {
+  background-color: yellow;
+}
+
