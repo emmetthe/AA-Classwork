@@ -1,0 +1,15 @@
+.clock {
+  font-family: "Raleway";
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  background-color: yellow;
+}
+
+.clock * {
+  width: 50%;
+}
+
+.clock p {
+  text-align: right;
+}
