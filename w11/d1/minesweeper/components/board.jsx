@@ -9,15 +9,16 @@ export default class Board extends React.Component {
 
   render() {
     const tempBoard = this.props.board.grid.map((row, i) => {
-      row.map((tile, j) => {
-       return (new Minesweeper.Tile(this.props.board, [i, j]));
+      const tempTile = row.map((tile, j) => {
+        //  return (new Minesweeper.Tile(this.props.board, [i, j]));
+        return <Tile tile={new Minesweeper.Tile(this.props.board, [i, j])} updateGame={this.props.updateGame}/>;
       });
-      return <div key={i}></div>;
+      return <div key={i}>{tempTile}</div>
     });
     return (
       <div>
         <h1>Tile</h1>
-        <div><Tile tile={tempBoard}/></div>
+        <div>{tempBoard}</div>
       </div>
     );
   }
