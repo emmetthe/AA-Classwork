@@ -4,6 +4,17 @@ import * as Minesweeper from '../minesweeper';
 export default class Tile extends React.Component {
   constructor(props) {
     super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    const tile = this.props.tile;
+    if (e.altKey) {
+      tile.flagged = true;
+    } else {
+      tile.flagged = false;
+    }
+    this.props.updateGame(tile, tile.flagged);
   }
 
   render() {
@@ -23,6 +34,6 @@ export default class Tile extends React.Component {
       tileState = 'flagged';
       text = '\u1f3f';
     }
-    return <div className={tileState + " tile"} key={this.props.key}>{text}</div>;
+    return <div className={tileState + " tile"} data-id={this.props.dataId} onClick={this.handleClick}>{text}</div>;
   }
 }
