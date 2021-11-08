@@ -6,23 +6,23 @@ export default class Tile extends React.Component {
     super(props);
   }
 
-
   render() {
     const tile = this.props.tile;
-    let text = "";
+    let text = '';
+    let tileState = 'hidden';
     if (tile.explored) {
       if (tile.bombed) {
-        text = "\u2620";
+        tileState = 'bombed';
+        text = '\u2620';
       } else {
+        tileState = 'revealed';
         text = tile.adjacentBombCount;
       }
     }
     if (tile.flagged) {
-      text = "\u1f3f"
+      tileState = 'flagged';
+      text = '\u1f3f';
     }
-    return <div>
-      {text}
-    </div>
+    return <div className={tileState + " tile"} key={this.props.key}>{text}</div>;
   }
-
 }
