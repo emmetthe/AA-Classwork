@@ -7,9 +7,16 @@ export default class Board extends React.Component {
   }
 
   render() {
-    return <div>
-      <h1>Tile</h1>
-    </div>
+    const tempBoard = this.props.board.map((row, i) => {
+      row.map((tile, j) => {
+       return (new Tile(this.props.board, [i, j]));
+      });
+      return <div key={i}></div>;
+    });
+    return (
+      <div>
+        <h1>Tile</h1>
+      </div>
+    );
   }
-
 }
