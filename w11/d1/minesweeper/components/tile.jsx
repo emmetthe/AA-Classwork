@@ -34,6 +34,10 @@ export default class Tile extends React.Component {
       tileState = 'flagged';
       text = '\u1f3f';
     }
-    return <div className={tileState + " tile"} data-id={this.props.dataId} onClick={this.handleClick}>{text}</div>;
+    return (
+      <div className={tileState + ' tile'} onClick={this.handleClick}>
+        {text}
+      </div>
+    );
   }
 }
