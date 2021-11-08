@@ -1,10 +1,13 @@
 import React from 'react';
-import { Tile, Board } from '../minesweeper';
+import * as Minesweeper from '../minesweeper';
+import Board from './board';
 
-class Game extends React.Component {
+export default class Game extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { board: new Board() };
+    this.updateGame = this.updateGame.bind(this);
+    let board = new Minesweeper.Board(5, 6)
+    this.state = {board: board};
   }
 
   updateGame() {
@@ -12,6 +15,7 @@ class Game extends React.Component {
   }
 
   render() {
-    return <Board board={this.state.board} />;
+    return <div> <Board board={this.state.board} updateGame={this.updateGame} /> </div>
   }
 }
+
