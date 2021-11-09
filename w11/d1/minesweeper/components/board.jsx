@@ -6,10 +6,15 @@ export default class Board extends React.Component {
   constructor(props) {
     super(props);
     this.renderRow = this.renderRow.bind(this);
+    this.renderTile = this.renderTile.bind(this);
   }
 
-  renderRow() {
+  renderRow(row) {
+    return row.map((tile, i) => <div key={`row-${i}`}>{this.renderTile(tile)}</div>);
+  }
 
+  renderTile(tile) {
+    return <Tile tile={tile} updateGame={this.props.updateGame} />;
   }
 
   render() {
@@ -22,13 +27,10 @@ export default class Board extends React.Component {
     //   });
     //   return <div>{tempTile}</div>;
     // });
-    return this.props.board.grid.map((row => (
-      <div>
-        <h1>Tile</h1>
-        <div>{this.renderRow}</div>
+    return this.props.board.grid.map((row, j) => (
+      <div key={j}>
+        <div className="game-board">{this.renderRow(row)}</div>
       </div>
-
-    )
-    ))
+    ));
   }
 }

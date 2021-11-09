@@ -27,7 +27,7 @@ export default class Tile extends React.Component {
         text = '\u2620';
       } else {
         tileState = 'revealed';
-        text = tile.adjacentBombCount;
+        text = tile.adjacentBombCount();
       }
     }
     if (tile.flagged) {
