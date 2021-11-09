@@ -11,6 +11,7 @@ export default class Tile extends React.Component {
     const tile = this.props.tile;
     if (e.altKey) {
       tile.flagged = true;
+      console.log(tile)
     } else {
       tile.flagged = false;
     }
@@ -29,10 +30,9 @@ export default class Tile extends React.Component {
         tileState = 'revealed';
         text = tile.adjacentBombCount();
       }
-    }
-    if (tile.flagged) {
+    } else if (tile.flagged) {
       tileState = 'flagged';
-      text = '\u1f3f';
+      text = '\u2690';
     }
     return (
       <div className={tileState + ' tile'} onClick={this.handleClick}>
