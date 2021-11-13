@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default class IndividualPokemon extends React.Component {
   constructor(props) {
@@ -8,9 +8,11 @@ export default class IndividualPokemon extends React.Component {
   render() {
     return (
       <div>
-        <li>{this.props.poke.name}</li>
-        <li>{this.props.poke.imageURL}</li>
+        <li>
+          {this.props.poke.name} 
+          <img src={this.props.poke.imageUrl} />
+        </li>
       </div>
-    )
+    );
   }
 }

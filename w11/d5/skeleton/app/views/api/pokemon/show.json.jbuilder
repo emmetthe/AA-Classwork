@@ -7,7 +7,6 @@ end
 
 json.moves do
   @moves.each do |move|
-
     json.set! move.id do
       json.extract! move, :id, :name
     end
