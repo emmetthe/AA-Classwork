@@ -12,15 +12,20 @@ class PokemonIndexItem extends React.Component {
   }
 
   render() {
-    return (
-      <Link to="/pokemon/:id">
-        <li className="pokemon-index-item" onClick={this.handleClick}>
-          <span>{this.props.poke.id}</span>
-          <img src={this.props.poke.imageUrl} />
-          <span>{this.props.poke.name}</span>
-        </li>
-      </Link>
-    );
+    console.log(this.props);
+    if (!this.props.poke) {
+      return null;
+    } else {
+      return (
+        <Link to={`/pokemon/${this.props.poke.id}`}>
+          <li className="pokemon-index-item" onClick={this.handleClick}>
+            <span>{this.props.poke.id}</span>
+            <img src={this.props.poke.imageUrl} />
+            <span>{this.props.poke.name}</span>
+          </li>
+        </Link>
+      );
+    }
   }
 }
 
