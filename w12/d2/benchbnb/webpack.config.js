@@ -4,7 +4,7 @@ module.exports = {
   context: __dirname,
   entry: "./frontend/bench_bnb.jsx",
   output: {
-    path: path.resolve(__dirname),
+    path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
     filename: "bundle.js"
   },
   module: {
