@@ -11,19 +11,19 @@ User.delete_all
 b1 = Bench.create!(
   lat: 37.775769,
   lng: -122.434960,
-  description: 'alamo square, many dogs'
+  description: 'cool park'
 )
 
 b2 = Bench.create!(
   lat: 37.779760,
   lng: -122.413820,
-  description: 'UN plaza, food truck access'
+  description: 'somewhere downtown, with lots of pigeons'
 )
 
 b3 = Bench.create!(
   lat: 37.769996,
   lng: -122.511281,
-  description: 'Ocean Beach, gnarly breh'
+  description: 'Ocean Beach, cold and sandy'
 )
 
 u1 = User.create!(
